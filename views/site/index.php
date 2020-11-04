@@ -2,6 +2,8 @@
 
 /* @var $this yii\web\View */
 
+use app\components\MenuWidget;
+
 $this->title = 'My Yii Application';
 ?>
 
@@ -76,6 +78,9 @@ $this->title = 'My Yii Application';
             <div class="col-sm-3">
                 <div class="left-sidebar">
                     <h2>Category</h2>
+
+                    <?= MenuWidget::widget(['tpl' => 'select']) ?>
+
                     <div class="panel-group category-products" id="accordian"><!--category-productsr-->
                         <div class="panel panel-default">
                             <div class="panel-heading">
@@ -207,7 +212,7 @@ $this->title = 'My Yii Application';
                     </div><!--/price-range-->
                     
                     <div class="shipping text-center"><!--shipping-->
-                        <img src="images/home/shipping.jpg" alt="" />
+                        <img src="/images/home/shipping.jpg" alt="" />
                     </div><!--/shipping-->
                 
                 </div>
