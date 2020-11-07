@@ -39,6 +39,7 @@ web/css/*
 web/fonts/*
 
 web/images/*
+# !web/images/products
 
 web/js/*
 !web/js/jquery.accordion.js

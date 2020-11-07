@@ -5,6 +5,9 @@ namespace app\models;
 
 use yii\db\ActiveRecord;
 
+/**
+ * модель продуктов
+ */
 class Product extends ActiveRecord {
 
     public static function tableName() {

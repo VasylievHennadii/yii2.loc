@@ -5,6 +5,9 @@ namespace app\models;
 
 use yii\db\ActiveRecord;
 
+/**
+ * модель категорий
+ */
 class Category extends ActiveRecord {
 
     public static function tableName() {
