@@ -4,8 +4,6 @@
 
 use app\components\MenuWidget;
 use yii\helpers\Html;
-
-
 ?>
 
 <section id="slider"><!--slider-->
