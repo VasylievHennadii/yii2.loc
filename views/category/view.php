@@ -3,6 +3,8 @@
 
 use yii\helpers\Html;
 use yii\widgets\LinkPager;
+use yii\helpers\Url;
+use app\components\MenuWidget;
 ?>
 <section id="advertisement">
     <div class="container">
@@ -17,7 +19,7 @@ use yii\widgets\LinkPager;
                 <div class="left-sidebar">
                     <h2>Category</h2>
                     <ul class="catalog category-products">
-                        <?= \app\components\MenuWidget::widget(['tpl' => 'menu']) ?>
+                        <?= MenuWidget::widget(['tpl' => 'menu']) ?>
                     </ul>
 
                     <div class="brands_products"><!--brands_products-->
@@ -58,12 +60,14 @@ use yii\widgets\LinkPager;
                             <div class="col-sm-4">
                                 <div class="product-image-wrapper">
                                     <div class="single-products">
-                                        <div class="productinfo text-center">
-                                            <?= Html::img("@web/images/products/{$product->img}", ['alt' => $hit->name]) ?>
-                                            <h2>$<?= $product->price ?></h2>
-                                            <p><?= $product->name ?></p>
-                                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                        </div>
+                                        <a href="<?=  Url::to(['product/view', 'id' => $product->id])?>">
+                                            <div class="productinfo text-center">
+                                                <?= Html::img("@web/images/products/{$product->img}", ['alt' => $hit->name]) ?>
+                                                <h2>$<?= $product->price ?></h2>
+                                                <p><a href="<?=  Url::to(['product/view', 'id' => $product->id])?>"><?=$product->name;?></a></p>
+                                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                            </div>
+                                        </a>
                                         <!--<div class="product-overlay">
                                             <div class="overlay-content">
                                                 <h2>$56</h2>
