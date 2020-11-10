@@ -53,7 +53,7 @@ use app\components\MenuWidget;
 
             <div class="col-sm-9 padding-right">
                 <div class="features_items"><!--features_items-->
-                    <h2 class="title text-center"><?= $category->name; ?></h2>
+                    <h2 class="title text-center">Поиск по запросу: <?= Html::encode($q); ?></h2>
                     <?php if (!empty($products)): ?>
                         <?php $i = 0;
                         foreach ($products as $product): ?>
@@ -102,15 +102,9 @@ use app\components\MenuWidget;
                             ]);
                         ?>
                     <?php else : ?>
-                        <h2>Здесь товаров пока нет...</h2>
+                        <h2>Ничего не найдено...</h2>
                     <?php endif; ?>
                     <div class="clearfix"></div>
-<!--                    <ul class="pagination">
-                        <li class="active"><a href="">1</a></li>
-                        <li><a href="">2</a></li>
-                        <li><a href="">3</a></li>
-                        <li><a href="">&raquo;</a></li>
-                    </ul>-->
                 </div><!--features_items-->
             </div>
         </div>
