@@ -96,15 +96,15 @@ use app\components\MenuWidget;
             <h2><?= $product->name?></h2>
             <p>Web ID: 1089772</p>
             <img src="/images/product-details/rating.png" alt="" />
-								<span>
-									<span>US $<?= $product->price?></span>
-									<label>Quantity:</label>
-									<input type="text" value="1" />
-									<button type="button" class="btn btn-fefault cart">
-                                        <i class="fa fa-shopping-cart"></i>
-                                        Add to cart
-                                    </button>
-								</span>
+            <span>
+                    <span>US $<?= $product->price?></span>
+                    <label>Quantity:</label>
+                    <input type="text" value="1" id="qty" />
+                    <a href="<?=  Url::to(['cart/add', 'id' => $product->id]) ?>" data-id="<?=$product->id?>" class="btn btn-fefault add-to-cart cart">
+                        <i class="fa fa-shopping-cart"></i>
+                        Add to cart
+                    </a>
+            </span>
             <p><b>Availability:</b> In Stock</p>
             <p><b>Condition:</b> New</p>
             <p><b>Brand:</b> <a href="<?= Url::to(['category/view', 'id' => $product->category->id]) ?>"><?= $product->category->name?></a></p>
@@ -322,7 +322,7 @@ use app\components\MenuWidget;
                                 <?= Html::img("@web/images/products/{$hit->img}", ['alt' => $hit->name])?>
                                 <h2>$<?=$hit->price;?></h2>
                                 <p><a href="<?= Url::to(['product/view', 'id' => $hit->id]) ?>"><?=$hit->name;?></a>></p>
-                                <button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
+                                <a href="<?=  Url::to(['cart/add', 'id' => $hit->id]) ?>" data-id="<?=$hit->id?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                             </div>
                         </a>
                     </div>
