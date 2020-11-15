@@ -47,4 +47,17 @@ class CartController extends AppController{
         return $this->render('cart-modal', compact('session'));
     }
     
+    /**
+     * метод очистки корзины. Удаляем все товары по ключу 'cart', отдельно 'qty' и отдельно 'sum'
+     */
+    public function actionClear(){
+        $session = Yii::$app->session;
+        $session->open();
+        $session->remove('cart');
+        $session->remove('cart.qty');
+        $session->remove('cart.sum');
+        $this->layout = false;
+        return $this->render('cart-modal', compact('session'));
+    }
+    
 }
