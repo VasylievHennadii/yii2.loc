@@ -60,4 +60,27 @@ class CartController extends AppController{
         return $this->render('cart-modal', compact('session'));
     }
     
+    /**
+     * метод удаления одного наименования товара из корзины
+     */
+    public function actionDelItem(){
+        $id = Yii::$app->request->get('id');
+        $session = Yii::$app->session;
+        $session->open();
+        $cart = new Cart();
+        $cart->recalc($id);
+        $this->layout = false;
+        return $this->render('cart-modal', compact('session'));
+    }
+
+    /**
+     * метод вывода корзины по кнопке из хедера 
+     */
+    public function actionShow(){
+        $session = Yii::$app->session;
+        $session->open();        
+        $this->layout = false;
+        return $this->render('cart-modal', compact('session'));
+    }
+    
 }
