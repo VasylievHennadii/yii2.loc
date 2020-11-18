@@ -3,6 +3,8 @@
 namespace app\controllers;
 use app\models\Product;
 use app\models\Cart;
+use app\models\Order;
+use app\models\OrderItems;
 use Yii;
 
 /*Array два товара с id = 1 и id = 10, количество QTY и сумма SUM
@@ -89,7 +91,14 @@ class CartController extends AppController{
     }
     
     public function actionView(){
-        return $this->render('view');
+        $session = Yii::$app->session;
+        $session->open();
+        $this->setMeta('Корзина');
+        $order = new Order();
+        if($order->load(Yii::$app->request->post())){
+            debug(Yii::$app->request->post());
+        }
+        return $this->render('view', compact('session', 'order'));
     }
     
 }
