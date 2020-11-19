@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Ноя 11 2020 г., 00:53
+-- Время создания: Ноя 19 2020 г., 23:39
 -- Версия сервера: 10.3.13-MariaDB-log
 -- Версия PHP: 7.1.32
 
@@ -75,6 +75,74 @@ INSERT INTO `category` (`id`, `parent_id`, `name`, `keywords`, `description`) VA
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `order`
+--
+
+CREATE TABLE `order` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  `qty` int(10) NOT NULL,
+  `sum` float NOT NULL,
+  `status` enum('0','1') NOT NULL DEFAULT '0',
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `phone` varchar(255) NOT NULL,
+  `address` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `order`
+--
+
+INSERT INTO `order` (`id`, `created_at`, `updated_at`, `qty`, `sum`, `status`, `name`, `email`, `phone`, `address`) VALUES
+(1, '2020-11-18 15:15:58', '2020-11-18 15:15:58', 4, 566, '0', 'Андрей', '1@1.com', '111', '222'),
+(2, '2020-11-18 15:40:03', '2020-11-18 15:40:03', 4, 566, '0', 'Андрей', '1@1.com', '111', '2221'),
+(3, '2020-11-18 15:40:50', '2020-11-18 15:40:50', 4, 566, '0', 'Андрей', '1@1.com', '111', '2221'),
+(4, '2020-11-18 15:43:03', '2020-11-18 15:43:03', 4, 566, '0', 'Андрей', '1@1.com', '111', '1111111'),
+(5, '2020-11-18 15:47:21', '2020-11-18 15:47:21', 4, 566, '0', 'Андрей', '1@1.com', '123', '111222'),
+(6, '2020-11-18 18:06:20', '2020-11-18 18:06:20', 3, 146, '0', 'Андрей', '1@1.com', '222', '333'),
+(7, '2020-11-18 18:10:11', '2020-11-18 18:10:11', 2, 76, '0', 'Андрей', '1@1.com', '123', '333');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `order_items`
+--
+
+CREATE TABLE `order_items` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `order_id` int(10) UNSIGNED NOT NULL,
+  `product_id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `price` float NOT NULL,
+  `qty_item` int(11) NOT NULL,
+  `sum_item` float NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `order_items`
+--
+
+INSERT INTO `order_items` (`id`, `order_id`, `product_id`, `name`, `price`, `qty_item`, `sum_item`) VALUES
+(1, 3, 12, 'Сумка Michael Kors Selma Золотистая', 205, 2, 410),
+(2, 3, 2, 'Джинсы MR520 MR 227 20002 0115 29-34 р Синие', 56, 1, 56),
+(3, 3, 6, 'Кардиган Levi\'s Icy Grey Heather M', 100, 1, 100),
+(4, 4, 12, 'Сумка Michael Kors Selma Золотистая', 205, 2, 410),
+(5, 4, 2, 'Джинсы MR520 MR 227 20002 0115 29-34 р Синие', 56, 1, 56),
+(6, 4, 6, 'Кардиган Levi\'s Icy Grey Heather M', 100, 1, 100),
+(7, 5, 12, 'Сумка Michael Kors Selma Золотистая', 205, 2, 410),
+(8, 5, 2, 'Джинсы MR520 MR 227 20002 0115 29-34 р Синие', 56, 1, 56),
+(9, 5, 6, 'Кардиган Levi\'s Icy Grey Heather M', 100, 1, 100),
+(10, 6, 2, 'Джинсы MR520 MR 227 20002 0115 29-34 р Синие', 56, 1, 56),
+(11, 6, 3, 'Блуза Mango 53005681-05 M Бежевая', 20, 1, 20),
+(12, 6, 4, 'Блуза Tom Tailor TT 20312490071 7610 M Зелёная', 70, 1, 70),
+(13, 7, 2, 'Джинсы MR520 MR 227 20002 0115 29-34 р Синие', 56, 1, 56),
+(14, 7, 3, 'Блуза Mango 53005681-05 M Бежевая', 20, 1, 20);
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `product`
 --
 
@@ -112,6 +180,19 @@ INSERT INTO `product` (`id`, `category_id`, `name`, `content`, `price`, `keyword
 (13, 29, 'Сумка Michael Kors Bedford Красная', '\r\n\r\nОсобенность стиля Michael Kors заключается в том, что простота его коллекций гармонирует с роскошью. Этому дизайнеру под силу объединить американский утилитаризм в манере одеваться с европейской изысканностью и шармом. Все его работы отличает изящная утонченность, которая рождается из строгих, почти примитивных линий. Все аксессуары поддерживают общий стиль человека с безупречным вкусом.\r\n\r\nМодели Michael Kors могут оставаться оригинальными, стильными и неотразимыми в течение многих лет, что особо важно для покупательниц, не желающих постоянно обновлять свой гардероб.', 0, NULL, NULL, 'no-image.png', '0', '0', '0'),
 (14, 29, 'Сумка Michael Kors JS Travel Светло-розовая', '\r\n\r\nОсобенность стиля Michael Kors заключается в том, что простота его коллекций гармонирует с роскошью. Этому дизайнеру под силу объединить американский утилитаризм в манере одеваться с европейской изысканностью и шармом. Все его работы отличает изящная утонченность, которая рождается из строгих, почти примитивных линий. Все аксессуары поддерживают общий стиль человека с безупречным вкусом.\r\n\r\nМодели Michael Kors могут оставаться оригинальными, стильными и неотразимыми в течение многих лет, что особо важно для покупательниц, не желающих постоянно обновлять свой гардероб.', 0, NULL, NULL, 'no-image.png', '0', '0', '0');
 
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `user`
+--
+
+CREATE TABLE `user` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `auth_key` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 --
 -- Индексы сохранённых таблиц
 --
@@ -123,9 +204,27 @@ ALTER TABLE `category`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Индексы таблицы `order`
+--
+ALTER TABLE `order`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Индексы таблицы `order_items`
+--
+ALTER TABLE `order_items`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Индексы таблицы `product`
 --
 ALTER TABLE `product`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Индексы таблицы `user`
+--
+ALTER TABLE `user`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -139,10 +238,28 @@ ALTER TABLE `category`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
+-- AUTO_INCREMENT для таблицы `order`
+--
+ALTER TABLE `order`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+
+--
+-- AUTO_INCREMENT для таблицы `order_items`
+--
+ALTER TABLE `order_items`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+
+--
 -- AUTO_INCREMENT для таблицы `product`
 --
 ALTER TABLE `product`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- AUTO_INCREMENT для таблицы `user`
+--
+ALTER TABLE `user`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
