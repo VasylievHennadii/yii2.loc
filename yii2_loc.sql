@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Ноя 19 2020 г., 23:39
+-- Время создания: Ноя 20 2020 г., 02:38
 -- Версия сервера: 10.3.13-MariaDB-log
 -- Версия PHP: 7.1.32
 
@@ -194,6 +194,13 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
+-- Дамп данных таблицы `user`
+--
+
+INSERT INTO `user` (`id`, `username`, `password`, `auth_key`) VALUES
+(1, 'admin', '$2y$13$Nr/Zz8h8I4scinOeSRSSa.ickQTWAhfP64HsaimZGf3RYKJwMECYq', 'uIkSVT_e__mmmxeXYjncn1tFZxsKokRV');
+
+--
 -- Индексы сохранённых таблиц
 --
 
@@ -259,7 +266,7 @@ ALTER TABLE `product`
 -- AUTO_INCREMENT для таблицы `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
