@@ -49,16 +49,16 @@ class Order extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
-            'qty' => 'Qty',
-            'sum' => 'Sum',
-            'status' => 'Status',
-            'name' => 'Name',
-            'email' => 'Email',
-            'phone' => 'Phone',
-            'address' => 'Address',
+            'id' => '№ заказа',
+            'created_at' => 'Дата создания',
+            'updated_at' => 'Дата изменения',
+            'qty' => 'Кол-во',
+            'sum' => 'Сумма',
+            'status' => 'Статус',
+            'name' => 'Имя',
+            'email' => 'E-mail',
+            'phone' => 'Телефон',
+            'address' => 'Адрес',
         ];
     }
 }

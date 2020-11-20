@@ -27,6 +27,13 @@ $this->params['breadcrumbs'][] = $this->title;
             'updated_at',
             'qty',
             'sum',
+            [
+                'attribute' => 'status',
+                'value' => function ($data){
+                    return !$data->status ? '<span class="text-danger">Активен</span>' : '<span class="text-success">Завершен</span>';
+                },
+                'format' => 'html',        
+            ],
             // 'status',
             // 'name',
             // 'email:email',
