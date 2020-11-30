@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Ноя 20 2020 г., 02:38
+-- Время создания: Ноя 30 2020 г., 19:30
 -- Версия сервера: 10.3.13-MariaDB-log
 -- Версия PHP: 7.1.32
 
@@ -59,7 +59,7 @@ INSERT INTO `category` (`id`, `parent_id`, `name`, `keywords`, `description`) VA
 (16, 2, 'Dolce and Gabbana', NULL, NULL),
 (17, 2, 'Chanel', NULL, NULL),
 (18, 2, 'Gucci', NULL, NULL),
-(19, 3, 'Fendi', NULL, NULL),
+(19, 3, 'Fendi', '', ''),
 (20, 3, 'Guess', NULL, NULL),
 (21, 3, 'Valentino', NULL, NULL),
 (22, 3, 'Dior', NULL, NULL),
@@ -96,9 +96,8 @@ CREATE TABLE `order` (
 --
 
 INSERT INTO `order` (`id`, `created_at`, `updated_at`, `qty`, `sum`, `status`, `name`, `email`, `phone`, `address`) VALUES
-(1, '2020-11-18 15:15:58', '2020-11-18 15:15:58', 4, 566, '0', 'Андрей', '1@1.com', '111', '222'),
-(2, '2020-11-18 15:40:03', '2020-11-18 15:40:03', 4, 566, '0', 'Андрей', '1@1.com', '111', '2221'),
-(3, '2020-11-18 15:40:50', '2020-11-18 15:40:50', 4, 566, '0', 'Андрей', '1@1.com', '111', '2221'),
+(1, '2020-11-18 15:15:58', '2020-11-18 15:15:58', 4, 566, '1', 'Андрей', '1@1.com', '111', '222'),
+(3, '2020-11-18 15:40:50', '2020-11-21 15:40:50', 4, 566, '1', 'Андрей', '1@1.com', '111', '2221888'),
 (4, '2020-11-18 15:43:03', '2020-11-18 15:43:03', 4, 566, '0', 'Андрей', '1@1.com', '111', '1111111'),
 (5, '2020-11-18 15:47:21', '2020-11-18 15:47:21', 4, 566, '0', 'Андрей', '1@1.com', '123', '111222'),
 (6, '2020-11-18 18:06:20', '2020-11-18 18:06:20', 3, 146, '0', 'Андрей', '1@1.com', '222', '333'),
@@ -198,7 +197,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `username`, `password`, `auth_key`) VALUES
-(1, 'admin', '$2y$13$Nr/Zz8h8I4scinOeSRSSa.ickQTWAhfP64HsaimZGf3RYKJwMECYq', 'uIkSVT_e__mmmxeXYjncn1tFZxsKokRV');
+(1, 'admin', '$2y$13$Nr/Zz8h8I4scinOeSRSSa.ickQTWAhfP64HsaimZGf3RYKJwMECYq', 'LugA0oupJ9i2_kLF_Ejb_cKHxkl0qKvJ');
 
 --
 -- Индексы сохранённых таблиц
@@ -242,19 +241,19 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT для таблицы `category`
 --
 ALTER TABLE `category`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT для таблицы `order`
 --
 ALTER TABLE `order`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT для таблицы `order_items`
 --
 ALTER TABLE `order_items`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 
 --
 -- AUTO_INCREMENT для таблицы `product`

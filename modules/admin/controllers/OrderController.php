@@ -107,6 +107,7 @@ class OrderController extends AppAdminController
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
+        OrderItems::deleteAll(['order_id' => $id]);
 
         return $this->redirect(['index']);
     }
