@@ -75,8 +75,10 @@ $config = [
             'class' => 'mihaildev\elfinder\PathController',
             'access' => ['@'],
             'root' => [
-                'path' => 'files',
-                'name' => 'Files'
+                'baseUrl'=>'/web',
+//                'basePath'=>'@webroot',
+                'path' => 'upload/global',
+                'name' => 'Global'
             ],
 //            'watermark' => [
 //                'source'         => __DIR__.'/logo.png', // Path to Water mark image
