@@ -11,9 +11,9 @@ mihaildev\elfinder\Assets::noConflict($this);
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="product-form">
+<div class="product-form">    
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
     
      <div class="form-group field-product-category_id has-success">
         <label class="control-label" for="product-category_id">Родительская категория</label>
@@ -35,7 +35,7 @@ mihaildev\elfinder\Assets::noConflict($this);
     
     <?php 
         echo $form->field($model, 'content')->widget(CKEditor::className(), [              
-            'editorOptions' => ElFinder::ckeditorOptions('elfinder',[/* Some CKEditor Options */]),               
+            'editorOptions' => ElFinder::ckeditorOptions('elfinder',[]),               
         ]);
     ?>
 
@@ -45,7 +45,7 @@ mihaildev\elfinder\Assets::noConflict($this);
 
     <?= $form->field($model, 'description')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'img')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'image')->fileInput() ?>
 
     <?= $form->field($model, 'hit')->checkbox([ '0', '1', ]) ?>
 
