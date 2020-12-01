@@ -82,17 +82,20 @@ class ProductController extends Controller
      * @param integer $id
      * @return mixed
      */
-    public function actionUpdate($id)
+     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            
+
             $model->image = UploadedFile::getInstance($model, 'image');
-            if($model->image){
-                $model->upload();                
-            }            
-            
+            if( $model->image ){
+                $model->upload();
+            }
+            unset($model->image);
+            $model->gallery = UploadedFile::getInstances($model, 'gallery');
+            $model->uploadGallery();
+
             Yii::$app->session->setFlash('success', "Товар {$model->name} обновлен");
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
@@ -101,6 +104,7 @@ class ProductController extends Controller
             ]);
         }
     }
+
 
     /**
      * Deletes an existing Product model.
